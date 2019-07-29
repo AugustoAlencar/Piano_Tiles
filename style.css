@@ -1,0 +1,167 @@
+* {
+	box-sizing: border-box;
+	font-family: sans-serif;
+}
+
+body {
+	background-color: #111;
+	counter-reset: points;
+}
+
+.piano .cover-start, .piano .cover-end {
+	position: absolute;
+	left: 0;
+	width: 80vw;
+	z-index: 2;
+	border: none;
+}
+
+.piano .cover-start {
+	height: 175vh;
+	top: 0;
+}
+
+.piano .cover-end {
+	height: 25vh;
+	bottom: 0;
+}
+
+.game {
+	background-color: #fff;
+	width: 80vw;
+	height: 100vh;
+	border: 2px solid #fff;
+	margin: 0 auto;
+	position: relative;
+	overflow: hidden;
+}
+
+.piano {
+	position: absolute;
+	bottom: 0;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	    flex-wrap: wrap;
+}
+
+.piano input {
+	position: absolute;
+	left: -9999px;
+}
+
+.piano label {
+	-webkit-box-flex: 1;
+	    -ms-flex: 1 25%;
+	        flex: 1 25%;
+	width: 20vw;
+	height: 25vh;
+	border: 1px solid #000;
+	-webkit-transition: all 0.5s ease-in;
+	transition: all 0.5s ease-in;
+}
+
+label.target-key {
+	background-color: #000;
+}
+
+input.target-key:checked {
+	counter-increment: points;
+}
+
+input[name='tecla-h']:not(.target-key):checked ~ label[for^='tecla-h'],
+input[name='tecla-g']:not(.target-key):checked ~ label[for^='tecla-g'],
+input[name='tecla-f']:not(.target-key):checked ~ label[for^='tecla-f'],
+input[name='tecla-e']:not(.target-key):checked ~ label[for^='tecla-e'],
+input[name='tecla-d']:not(.target-key):checked ~ label[for^='tecla-d'],
+input[name='tecla-c']:not(.target-key):checked ~ label[for^='tecla-c'],
+input[name='tecla-b']:not(.target-key):checked ~ label[for^='tecla-b'],
+input[name='tecla-a']:not(.target-key):checked ~ label[for^='tecla-a'] {
+	background-color: red;
+	pointer-events: none;
+}
+
+.piano input[name='tecla-h'].target-key:checked ~ label[for^='tecla-h'].target-key,
+.piano input[name='tecla-g'].target-key:checked ~ label[for^='tecla-g'].target-key,
+.piano input[name='tecla-f'].target-key:checked ~ label[for^='tecla-f'].target-key,
+.piano input[name='tecla-e'].target-key:checked ~ label[for^='tecla-e'].target-key,
+.piano input[name='tecla-d'].target-key:checked ~ label[for^='tecla-d'].target-key,
+.piano input[name='tecla-c'].target-key:checked ~ label[for^='tecla-c'].target-key,
+.piano input[name='tecla-b'].target-key:checked ~ label[for^='tecla-b'].target-key,
+.piano input[name='tecla-a'].target-key:checked ~ label[for^='tecla-a'].target-key {
+	background-color: #ccc;
+}
+
+input[name='tecla-h'].target-key:checked ~ label {
+	-webkit-transform: translateY(25vh);
+	        transform: translateY(25vh);
+}
+
+input[name='tecla-g'].target-key:checked ~ input[name='tecla-h'].target-key:checked ~ label {
+	-webkit-transform: translateY(50vh);
+	        transform: translateY(50vh);
+}
+
+input[name='tecla-f'].target-key:checked ~ input[name='tecla-g'].target-key:checked ~ input[name='tecla-h'].target-key:checked ~ label {
+	-webkit-transform: translateY(75vh);
+	        transform: translateY(75vh);
+}
+
+input[name='tecla-e'].target-key:checked ~ input[name='tecla-f'].target-key:checked ~ input[name='tecla-g'].target-key:checked ~ input[name='tecla-h'].target-key:checked ~ label {
+	-webkit-transform: translateY(100vh);
+	        transform: translateY(100vh);
+}
+
+input[name='tecla-d'].target-key:checked ~ input[name='tecla-e'].target-key:checked ~ input[name='tecla-f'].target-key:checked ~ input[name='tecla-g'].target-key:checked ~ input[name='tecla-h'].target-key:checked ~ label {
+	-webkit-transform: translateY(125vh);
+	        transform: translateY(125vh);
+}
+
+input[name='tecla-c'].target-key:checked ~ input[name='tecla-d'].target-key:checked ~ input[name='tecla-e'].target-key:checked ~ input[name='tecla-f'].target-key:checked ~ input[name='tecla-g'].target-key:checked ~ input[name='tecla-h'].target-key:checked ~ label {
+	-webkit-transform: translateY(150vh);
+	        transform: translateY(150vh);
+}
+
+input[name='tecla-b'].target-key:checked ~ input[name='tecla-c'].target-key:checked ~ input[name='tecla-d'].target-key:checked ~ input[name='tecla-e'].target-key:checked ~ input[name='tecla-f'].target-key:checked ~ input[name='tecla-g'].target-key:checked ~ input[name='tecla-h'].target-key:checked ~ label {
+	-webkit-transform: translateY(175vh);
+	        transform: translateY(175vh);
+}
+
+input[name='tecla-a'].target-key:checked ~ input[name='tecla-b'].target-key:checked ~ input[name='tecla-c'].target-key:checked ~ input[name='tecla-d'].target-key:checked ~ input[name='tecla-e'].target-key:checked ~ input[name='tecla-f'].target-key:checked ~ input[name='tecla-g'].target-key:checked ~ input[name='tecla-h'].target-key:checked ~ label {
+	-webkit-transform: translateY(200vh);
+	        transform: translateY(200vh);
+}
+
+.game:after {
+	content: counter(points);
+	display: block;
+	text-align: center;
+	font-size: 3em;
+	color: #D07400;
+	position: absolute;
+	left: 50%;
+	-webkit-transform: translate(-50%);
+	        transform: translate(-50%);
+	top: 2vh;
+	font-weight: bold;
+}
+
+.start {
+	background-color: #D07400;
+	border: none;
+	color: #000;
+	font-size: 1.5em;
+	text-align: center;
+	padding-top: 10vh;
+}
+
+.start:before {
+	content: 'tap the ';
+	color: #fff;
+}
+
+.start:after {
+	content: ' tile to start';
+	color: #fff;
+}
